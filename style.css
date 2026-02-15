@@ -1,0 +1,282 @@
+/* ===== Grundstil ===== */ 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #111;
+}
+
+.container {
+    width: 880px;
+    max-width: 95%;
+    margin: 30px auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+/* ===== Rubrik ===== */
+h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 1.2px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    color: #0058a3;
+    position: relative;
+    text-shadow: 1px 0.5px 1px rgba(0, 0, 0, 0.3);
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 260px;
+    height: 4px;
+    margin: 8px auto 0;
+    background-color: #ffdb00;
+    border-radius: 2px;
+}
+
+.warning-text-modern {
+    background: linear-gradient(90deg, #ffdb00 0%, #fffacd 100%); /* gul gradient */
+    color: #0058a3; /* matchar h1-blå */
+    border: 1px solid #ffdb00;
+    border-left: 6px solid #0058a3; /* markerar viktighet */
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 1.6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin: 20px 0;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Icon-stil för att sticka ut */
+.warning-text-modern::before {
+    content: "⚠️";
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px; /* centrera med text */
+}
+
+
+
+/* ===== PDF-Input & Viewer ===== */
+.file-input-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#pdfInput {
+    display: none; /* döljer den vanliga filinputen */
+}
+
+.file-btn {
+    display: inline-block;
+    background-color: #0058a3;   /* matchar h1-blå */
+    color: #ffdb00;              /* matchar h1-gul */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+.file-btn:hover {
+    background-color: #004080;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+
+.pdf-wrapper {
+    width: 100%;
+    height: 25vh;
+    border-radius: 6px;
+    overflow: auto;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#pdfCanvas {
+    width: 100%;
+}
+
+/* ===== Tabell med scroll-wrapper ===== */
+.table-container {
+    border-radius: 4px;
+    border: 1px solid #0058a3;
+    overflow: hidden; /* säkerställer att hörn syns */
+    background-color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+    max-height: 250px;
+}
+
+.scroll-wrapper {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+/* Tabell */
+#scheduleTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#scheduleTable thead th {
+    position: sticky;
+    top: 0;
+    background: #0058a3; /* matchar h1-blå */
+    color: #ffdb00;      /* matchar h1-gul */
+    border-bottom: 2px solid #004080;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+#scheduleTable td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #cce0f0; /* ljusare blå linje */
+    font-size: 14px;
+}
+
+/* ===== Redigerbara celler ===== */
+.editable-cell {
+    background-color: #fff9c4;  /* ljusgul */
+    border: 1px dashed #ffdb00; /* gul kant */
+    cursor: text;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: background-color 0.2s, outline 0.2s;
+}
+
+.editable-cell:focus {
+    outline: 1px solid #0058a3;
+    border-radius: 0px;
+    background-color: #fff59d;
+}
+
+/* ===== Toggle Switch ===== */
+.ics-controls {
+    display: flex;
+    justify-content: space-between; /* Toggle till vänster, knapp till höger */
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap; /* Bra för mobil */
+}
+
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 26px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+    background-color: #0058a3; /* matchar h1 */
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.toggle-label {
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* Textfält som visas när toggle är aktiv */
+.common-input {
+    display: none;
+    width: 220px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #0058a3;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+#commonActivityToggle:checked ~ .common-input {
+    display: inline-block;
+}
+
+/* ===== Knapp ===== */
+button#createICSBtn {
+    background-color: #0058a3; /* matchar h1 */
+    color: #ffdb00;             /* matchar h1-gul */
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+button#createICSBtn:hover {
+    background-color: #004080;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ===== Mobilanpassning ===== */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .ics-controls {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    #outputText {
+        height: 30px;
+    }
+}

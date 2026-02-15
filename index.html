@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>iMakeICS</title>
+    <link rel="icon" href="lazyrabbitico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>PDF till ICS</h1>
+
+    <!-- PDF Input -->
+<!-- Centrera filknappen -->
+    <div class="file-input-wrapper">
+        <label for="pdfInput" class="file-btn">Välj PDF-fil</label>
+        <input type="file" id="pdfInput" accept="application/pdf">
+    </div>
+    <p class="warning-text-modern">
+    Användaren ansvarar själv för att kontrollera att de importerade arbetsdagarna är korrekta. Programmet genererar ICS-filer baserat på en PDF som kan förändras, vilket kan påverka resultatet. Utvecklaren tar inget ansvar för eventuella fel.
+    </p>    <!-- PDF Preview -->
+    <div class="pdf-wrapper">
+        <canvas id="pdfCanvas"></canvas>
+    </div>
+
+
+    <!-- Tabell med scroll-wrapper -->
+    <div class="table-container">
+        <div class="scroll-wrapper">
+            <table id="scheduleTable">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Aktivitet</th>
+                        <th>Starttid</th>
+                        <th>Sluttid</th>
+                        <th>Arbetstid</th>
+                        <th>Rast</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamiska rader fylls med JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Toggle Switch för gemensam aktivitet -->
+    <div class="ics-controls">
+        <div class="toggle-wrapper" style="display:flex; align-items:center; gap:10px;">
+            <label class="switch">
+                <input type="checkbox" id="commonActivityToggle">
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Sätt gemensam aktivitet</span>
+            <input type="text" id="commonActivityInput" class="common-input" placeholder="Ange aktivitet">
+        </div>
+
+        <button id="createICSBtn">Skapa importerbar ICS</button>
+    </div>
+
+
+<!-- PDF.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
